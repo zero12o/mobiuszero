@@ -31,7 +31,6 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 // 		- Font Colors
 // 		- Bullet Icons And Colors
 //  iii. functions
-//  iv. Wordpress styles
 //  v. Miscellaneous
 // 	# Font 
 // 	# Layout
@@ -42,7 +41,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 //  # Title Section 
 // 	# Contact Section
 // 	# Content Section
-//  
+// 	** Wordpress styles **
 // ----------------------------
 // i. imports
 // ************************
@@ -105,18 +104,15 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 // # Font 
 // ========================
 	html {
-		font-size: 10px;
 		font-family: sans-serif;
+		font-size: 62.5%;
 	}
 	body {
-		font-family: $base_font-family;
 		font-size: 16px;
+		font-family: $base_font-family;
 		color: lighten($base_fontColor, 20%);
 		font-kerning: normal;
 		line-height: 1.625;
-	}
-	p {
-		font-size: rem(18);
 	}
 	.module {
 		& a {
@@ -129,6 +125,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 			font-family: $heading_font-family;
 			font-size: rem($value);
 			color: lighten($base_fontColor, 10%);
+			clear: both;
 		}
 	}
 
@@ -148,13 +145,13 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 		@include padding(2.5% null 2.5% null);
 	}
 // title section  
-	section.title { 
+	header.title { 
 		background-color: darken($base_bgcolor, 5%);
 		// background-image: $image_titlebg;
-		// background-position: center center;
-		// background-size: cover;
-		// background-repeat: no-repeat;
-		// background-attachment: fixed;
+		background-position: center center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
 	}
 // main content section 
 	section.content {
@@ -202,7 +199,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 
 // # Footer 
 // =========================
-	footer {
+	footer.site-footer {
 		@include padding (1.25% null 1.25% null);
 		color: $sub_fontColor;
 		background: $base_bgcolor;
@@ -224,7 +221,10 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 			color: $sub_fontColor;
 		}
 		& p {
-			text-align: justify;
+			text-align: center;
+			&.site-info {
+				margin-bottom: 0;
+			}
 		}
 
 	}
@@ -275,11 +275,11 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 		    @include animation (fadein 1.50s ease-in);
 			@include keyframes(fadein) {
 				0% {
-					@include opacity(0);
+					opacity: 0;
 					@include transform(translateY(900px));
 				}
 				100% {
-					@include opacity(1);
+					opacity: 1;
 				}
 					
 			}
@@ -311,7 +311,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 
 		& h1.logo { 	
 			font-family: 'Fredoka One','Roboto',san-serif;
-			font-size: rem(90);
+			font-size: rem(125);
 			line-height: 1.33;
 			font-weight: 100;
 			margin-top: 0;
@@ -349,3 +349,13 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 	}
 // # Miscellaneous
 // ************************
+
+// ** Wordpress Styles ****
+// ************************
+	// - Variables and mixins
+	@import "variables-site/variables-site";
+	@import "mixins/mixins-master";
+	// - Alignments
+	@import "modules/alignments";
+	// - Clearings
+	@import "modules/clearings";

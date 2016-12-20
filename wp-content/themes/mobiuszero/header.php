@@ -21,32 +21,19 @@
 </head>
 
 <body <?php body_class(); ?>>
-<div id="" class="site">
-	<a class="sr-only sr-only-focusable" href="#content"><?php esc_html_e( 'Skip to content', 'mobiuszero' ); ?></a>
 
-	<header id="masthead" class="site-header title module" role="banner">
-		<div class="site-branding">
-                    <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-		</div><!-- .site-branding -->
-
-		<nav id="site-navigation" class="navbar" role="navigation">
-                        <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#navbar-header" aria-controls="navbar-header" aria-expanded="false" aria-label="Toggle navigation"></button>
-                        <div class="collapse navbar-toggleable-xs" id="navbar-header">
-                            <a class="navbar-brand">
-
-                            </a>
-                            <?php 
-                                wp_nav_menu( 
-                                    array( 
-                                        'theme_location' => 'primary', 
-                                        'menu_id' => 'primary-menu',                
-                                        'menu_class'        => 'nav navbar-nav',
-
-                                    ) 
-                                ); 
-                            ?>
+    <header id="title_section" class="title module" role="banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="logo-placement">
+                        <div class="logo-holder">
+                            <h1 class="logo text-xs-center"><?php bloginfo( 'name' ); ?></h1>
                         </div>
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header><!-- #titleSection -->
 
-	<div id="content" class="site-content">
+    <main class="site-content"  role="main">

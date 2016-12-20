@@ -7,18 +7,23 @@
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
  * @package mobiusZero
- */
+ */ 
 
 ?>
 
-	</div><!-- #content -->
+    </main> <!-- #content -->
 
-	<footer id="colophon" class="site-footer" role="contentinfo">
-		<div class="site-info">
-			<?php printf( esc_html__( '%2$s.', 'mobiuszero' ), 'mobiuszero', '<a href="http://mobiuszero.com" rel="designer">Mobius Zero &copy;</a>' ); ?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
-</div><!-- #page -->
+    <footer id="colophon" class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="site-info">
+                        <?php bloginfo("name"); echo " &copy; "; echo date('Y'); ?>
+                    </p>    
+                </div>
+            </div>
+        </div>
+    </footer><!-- #colophon -->
 
 <?php wp_footer(); ?>
 
