@@ -28,12 +28,19 @@ remove_action('wp_head', 'rsd_link');
 //Remove the shortlink wp head
 remove_action( 'wp_head', 'wp_shortlink_wp_head');
 
-//Remove the wordpress version generator
-remove_action('wp_head', 'wp_generator');
+/**
+ * Remove the wordpress version generator 
+ * @link http://www.wpbeginner.com/wp-tutorials/the-right-way-to-remove-wordpress-version-number/
+ */
+function wp_remove_version() {
+    return '';
+}
+
+$add_filter = add_filter('the_generator', 'wp_remove_version');
 
 //remove rss feeds for the site. ** FOR NOW ** 
 function wpb_disable_feed() {
-wp_die( __('No feed available,please visit our <a href="'. get_bloginfo('url') .'">homepage</a>!') );
+wp_die( __('No feed available,please visit <a href="'. get_bloginfo('url') .'">homepage</a>!') );
 }
 
 add_action('do_feed', 'wpb_disable_feed', 1);

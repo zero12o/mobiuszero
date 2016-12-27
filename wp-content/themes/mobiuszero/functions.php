@@ -25,7 +25,7 @@ function mobiuszero_setup() {
 	load_theme_textdomain( 'mobiuszero', get_template_directory() . '/languages' );
 
 	// Add default posts and comments RSS feed links to head.
-	add_theme_support( 'automatic-feed-links' );
+        // add_theme_support( 'automatic-feed-links' );
 
 	/*
 	 * Let WordPress manage the document title.
@@ -58,27 +58,9 @@ function mobiuszero_setup() {
 		'gallery',
 		'caption',
 	) );
-
-	// Set up the WordPress core custom background feature.
-	add_theme_support( 'custom-background', apply_filters( 'mobiuszero_custom_background_args', array(
-		'default-color' => 'ffffff',
-		'default-image' => '',
-	) ) );
 }
 endif;
 add_action( 'after_setup_theme', 'mobiuszero_setup' );
-
-/**
- * Set the content width in pixels, based on the theme's design and stylesheet.
- *
- * Priority 0 to make it available to lower priority callbacks.
- *
- * @global int $content_width
- */
-function mobiuszero_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'mobiuszero_content_width', 640 );
-}
-add_action( 'after_setup_theme', 'mobiuszero_content_width', 0 );
 
 /**
  * Register widget area.
@@ -92,8 +74,8 @@ function mobiuszero_widgets_init() {
 		'description'   => esc_html__( 'Add widgets here.', 'mobiuszero' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
 	) );
 }
 add_action( 'widgets_init', 'mobiuszero_widgets_init' );
@@ -110,11 +92,6 @@ function mobiuszero_scripts() {
 add_action( 'wp_enqueue_scripts', 'mobiuszero_scripts' );
 
 /**
- * Implement the Custom Header feature.
- */
-require get_template_directory() . '/inc/custom-header.php';
-
-/**
  * Custom template tags for this theme.
  */
 require get_template_directory() . '/inc/template-tags.php';
@@ -123,6 +100,11 @@ require get_template_directory() . '/inc/template-tags.php';
  * Custom functions that act independently of the theme templates.
  */
 require get_template_directory() . '/inc/extras.php';
+
+/**
+ * Helper library for the theme customizer.
+ */
+require get_template_directory() . '/inc/helpers/customizer-lib/customizer-library.php';
 
 /**
  * Customizer additions.
@@ -138,3 +120,22 @@ require get_template_directory() . '/inc/jetpack.php';
  * Load Removals
  */
 require get_template_directory() . '/inc/removals.php';
+
+/**
+ * Implement the Custom Header feature.
+ */
+require get_template_directory() . '/inc/custom-header.php';
+
+/**
+ * Create custom post types for the theme
+ */
+require get_template_directory() . '/inc/custom_postTypes.php';
+/**
+ * Custom side bars for the front page sections.
+ */
+require get_template_directory() . '/inc/sidebars/front-page-sidebar.php';
+/**
+ * Custom widgets for the theme's front page sections.
+ */
+require get_template_directory() . '/inc/widget/section_widget.php';
+

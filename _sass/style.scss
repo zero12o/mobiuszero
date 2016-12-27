@@ -4,8 +4,8 @@ Theme URI: http://mobiuszero.com/learn-more
 Author: mobiusZero
 Author URI: http://mobiuszero.com
 Description: This a sassy portfolio that is made in bootstrap 4 and wordpress combined. Inspired by understrap. I wanted a one page site with a bit of admin functions and this is the result of it.
-
-Version: 1.0.0
+ 
+Version: 0.2.37
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: mobiuszero
@@ -66,7 +66,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 	$base_fontColor: #212121;
 	$sub_fontColor: #ffffff; 
 	$heading_fontColor: #1c1c1c;
-//  - Bullet color
+//  - Bullet color 
 	$fa-bullets_check_color: #128915;
 
 // iii. functions
@@ -99,14 +99,10 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 			border: none;
 			@include box-shadow(0 0 darken($btn_color,15%));
 		}
-	}
+	} 
 
 // # Font 
 // ========================
-	html {
-		font-family: sans-serif;
-		font-size: 62.5%;
-	}
 	body {
 		font-size: 16px;
 		font-family: $base_font-family;
@@ -114,27 +110,26 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 		font-kerning: normal;
 		line-height: 1.625;
 	}
-	.module {
+	.module { 
 		& a {
 			text-decoration: underline;
 		}
-	}
-	$heading_sizes: ( 1: 40px, 2: 32px, 3: 28px, 4: 24px, 5: 20px, 6: 16px );
-	@each $heading, $value in $heading_sizes {
-		h#{$heading}, .h#{$heading} {
-			font-family: $heading_font-family;
-			font-size: rem($value);
-			color: lighten($base_fontColor, 10%);
+	}    
+ 
+	@for $headings from 1 through 6 { 
+		h#{$headings}, .h#{$headings} {
+			font-family: $heading_font-family; 
+			color: lighten($base_fontColor, 7%);
 			clear: both;
-		}
-	}
+		} 
+	} 
 
 // # Site Layout
 // =======================
 	html {
 		margin: 0;
 		padding: 0;
-	}
+	} 
 	body,.site {
 		margin: 0;
 		padding: 0;
@@ -231,13 +226,6 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 // # Modals 
 // =========================
 
-// # Portfolio Section
-// =========================
-	section.portfolio {
-
-	}
-// =========================
-
     
 // # Title Section 
 // =========================
@@ -311,14 +299,14 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 
 		& h1.logo { 	
 			font-family: 'Fredoka One','Roboto',san-serif;
-			font-size: rem(125);
+			font-size: rem(85);
 			line-height: 1.33;
 			font-weight: 100;
 			margin-top: 0;
 			@include mq($from: tablet, $until: desktop){
-				font-size: rem(70);
+				font-size: rem(75);
 			}
-			@include mq($from: mobile, $until: tablet){ 
+			@include mq($from: xs-mobile, $until: tablet){ 
 				font-size: rem(50);
 			}
 
@@ -337,16 +325,37 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 			color: $sub_fontColor;
 		}
 	}
+// # Content spacing
+// =========================
+	section.content {
+		margin: 15px auto;
+	}
+// # About Section
+// =========================
+	section.about { 
+		& h2 {
+			font-size: 3rem;
+		}
+
+		@for $headings from 1 through 6 {
+		    & h#{$headings},.h#{$headings} {
+				font-weight: 700;
+				margin-bottom: 1.25rem;
+			}
+		}
+	}
+// # Portfolio Section
+// =========================
+	section.portfolio {
+
+	}
+
 // # Contact Section
 // =========================
 	section.contact {
 
 	}
-// # Content Section
-// =========================
-	section.content {
 
-	}
 // # Miscellaneous
 // ************************
 

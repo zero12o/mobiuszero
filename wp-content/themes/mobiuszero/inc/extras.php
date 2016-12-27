@@ -7,6 +7,25 @@
  * @package mobiusZero
  */
 
+/* Hide WP version strings from scripts and styles
+ * @return {string} $src
+ * @filter script_loader_src
+ * @filter style_loader_src
+ * @link https://www.webhostinghero.com/remove-wordpress-version-number/
+ */
+function remove_wp_version_strings( $src ) {
+    $mobius0 = wp_get_theme();
+    if ( strpos( $src, 'ver=' . get_bloginfo( 'version' ) ) ){
+        // Remove wordpress version number to script and style links        
+        $src = remove_query_arg( 'ver', $src );
+        // Add Theme's current version number
+        $src = add_query_arg( 'v', $mobius0->get('Version') , $src );
+    }
+    return $src;
+}
+add_filter( 'script_loader_src', 'remove_wp_version_strings' );
+add_filter( 'style_loader_src', 'remove_wp_version_strings' );
+
 /**
  * Adds custom classes to the array of body classes.
  *
